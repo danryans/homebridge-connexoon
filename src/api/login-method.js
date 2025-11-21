@@ -2,9 +2,11 @@ const request = require('request-promise-native');
 const { cachePromise } = require('../utils');
 
 class LoginMethod {
-    constructor({ username, password }, sessionTimeout, log) {
+    constructor({ username, password, token }, sessionTimeout, log) {
         this.username = username;
         this.password = password;
+        this.token = token
+
         this.log = log;
         this.request = request;
 

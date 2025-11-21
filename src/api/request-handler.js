@@ -3,9 +3,10 @@ const OAuthLogin = require('./oauth-login');
 const Server = require('./server');
 
 class RequestHandler {
-    constructor({ username, password, service }, log) {
+    constructor({ username, password, token, service }, log) {
         this.username = username;
         this.password = password;
+        this.token = token;
         this.server = new Server(service);
         this.log = log;
         this.loginHandler = null;
@@ -13,11 +14,11 @@ class RequestHandler {
 
     async login() {
         // check that credentials are provided
-        if (!this.username || !this.password) {
+        if (!this.username || !this.password || !this.token) {
             this.log.error(
-                'Username and password must be defined as configuration.'
+                'Username, password and token must be defined as configuration.'
             );
-            throw 'Username and password must be defined as configuration.';
+            throw 'Username, password and token must be defined as configuration.';
         }
 
         // if the login method has been resolved already, only use the one
@@ -36,7 +37,7 @@ class RequestHandler {
         // each one
         try {
             this.loginHandler = new OAuthLogin(
-                { username: this.username, password: this.password },
+                { username: this.username, password: this.password, token: this.token },
                 this.log
             );
             return await this.loginHandler.login();
@@ -48,7 +49,7 @@ class RequestHandler {
 
         try {
             this.loginHandler = new SimpleAuthLogin(
-                { username: this.username, password: this.password },
+                { username: this.username, password: this.password, token: this.token },
                 this.server,
                 this.log
             );

@@ -28,6 +28,13 @@
                 "required": true,
                 "default": ""
             },
+            "token": {
+                "title": "Tahoma API Token",
+                "description": "This token is generated in your Tahoma mobile app.",
+                "type": "string",
+                "required": true,
+                "default": ""
+            },
             "service": {
                 "title": "Somfy service",
                 "description": "Depending on your region/market, the Somfy service will differ. Generally choose the one matching the name of your iOS/Android application.",
@@ -35,11 +42,36 @@
                 "required": true,
                 "default": "ConnexoonRTS",
                 "oneOf": [
-                    { "title": "Connexoon RTS", "enum": ["ConnexoonRTS"] },
-                    { "title": "Connexoon", "enum": ["Connexoon"] },
-                    { "title": "Cozytouch", "enum": ["Cozytouch"] },
-                    { "title": "TaHoma", "enum": ["TaHoma"] },
-                    { "title": "TaHoma USA", "enum": ["TaHomaUSA"] }
+                    {
+                        "title": "Connexoon RTS",
+                        "enum": [
+                            "ConnexoonRTS"
+                        ]
+                    },
+                    {
+                        "title": "Connexoon",
+                        "enum": [
+                            "Connexoon"
+                        ]
+                    },
+                    {
+                        "title": "Cozytouch",
+                        "enum": [
+                            "Cozytouch"
+                        ]
+                    },
+                    {
+                        "title": "TaHoma",
+                        "enum": [
+                            "TaHoma"
+                        ]
+                    },
+                    {
+                        "title": "TaHoma USA",
+                        "enum": [
+                            "TaHomaUSA"
+                        ]
+                    }
                 ]
             },
             "pollingInterval": {
@@ -67,7 +99,11 @@
             "expandable": true,
             "expanded": false,
             "title": "Advanced Settings",
-            "items": ["name", "pollingInterval", "useListedDevicesOnly"]
+            "items": [
+                "name",
+                "pollingInterval",
+                "useListedDevicesOnly"
+            ]
         }
     ]
 }

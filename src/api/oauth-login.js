@@ -18,6 +18,9 @@ class OAuthLogin extends LoginMethod {
 
         const result = await this.request.post({
             url: SOMFY_OAUTH_URL,
+            headers: {
+                authorization: `Bearer ${this.token}`,
+            },
             form: {
                 grant_type: 'password',
                 username: this.username,

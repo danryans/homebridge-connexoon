@@ -15,6 +15,9 @@ class SimpleAuthLogin extends LoginMethod {
 
         const result = await this.request.post({
             url: this.server.getUrlForQuery('/login'),
+            headers: {
+                authorization: `Bearer ${this.token}`,
+            },
             form: {
                 userId: this.username,
                 userPassword: this.password,
